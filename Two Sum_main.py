@@ -1,4 +1,7 @@
 
+#  https://leetcode.com/problems/two-sum/description/
+
+
 def twoSum(nums,target):
 
     indexes=[]
@@ -14,4 +17,6 @@ def twoSum(nums,target):
 
 result = twoSum(nums=[2,7,11,15],target=9)
 print(result)
+
+
    
