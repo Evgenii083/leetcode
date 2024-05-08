@@ -1,6 +1,7 @@
 
 from typing import List, Self
 
+# https://leetcode.com/problems/average-value-of-even-numbers-that-are-divisible-by-three/
 
 def averageValue(self, nums: List[int]) -> int:
     array = []
