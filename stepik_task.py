@@ -1,4 +1,6 @@
 import os
+import timeit
+import psutil
 
 
 # Напишите программу, которая считывает текст из файла (в файле может быть больше одной строки) и выводит самое частое слово в этом тексте и через пробел то, сколько раз оно встретилось. 
@@ -24,26 +26,29 @@ with open(file_path, 'r') as file:
         lines.append(line)
     
 one_line = ''.join(lines).split()
-one_line = sorted(one_line)
 
 result = {}
-
 for word in one_line:
     count = one_line.count(word)
     result[word]= count
     
-sorted_result = dict(sorted(result.items(),key=lambda item:item[1],reverse=True)) 
-
-max_value = max(sorted_result.values())
+max_value = max(result.values())
 final_list = {}
 
-for key,value in sorted_result.items():
+for key,value in result.items():
     if value == max_value:
         final_list[key] = value
  
-final_list = dict(sorted(final_list.items()))       
+ 
 answer = next(iter(final_list.items()))
  
 
 print(f"{answer[0]} {answer[1]}")
+time =timeit.timeit('"-".join(str(n) for n in range(100))', number=10000)
+time = round(time,4)
+
+process = psutil.Process(os.getpid())
+
+print(f"Время : {time} сек.")
+print (f"Используемая память : {process.memory_info().rss / 1024 ** 2}")
     
